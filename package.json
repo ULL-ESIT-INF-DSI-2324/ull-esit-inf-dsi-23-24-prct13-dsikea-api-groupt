@@ -1,0 +1,30 @@
+{
+  "name": "ull-esit-inf-dsi-23-24-prct13-dsikea-api-groupt",
+  "version": "1.0.0",
+  "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/CaXtHsbh)",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc mocha",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output",
+    "start": "tsc-watch --onSuccess \"node dist/index.js\"",
+    "doc": "typedoc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "@types/chai": "^4.3.14",
+    "@types/mocha": "^10.0.6",
+    "chai": "^4.4.1",
+    "coveralls": "^3.1.1",
+    "eslint": "^8.57.0",
+    "globals": "^15.1.0",
+    "mocha": "^10.4.0",
+    "nyc": "^15.1.0",
+    "ts-node": "^10.9.2",
+    "tsc-watch": "^6.2.0",
+    "typedoc": "^0.25.13",
+    "typescript-eslint": "^7.7.1"
+  }
+}
