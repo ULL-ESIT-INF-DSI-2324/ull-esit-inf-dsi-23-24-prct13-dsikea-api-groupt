@@ -1,4 +1,7 @@
 {
+  "include": [
+    "src/**/*.ts"
+  ],
   "exclude": [
     "./tests",
     "./node_modules",
@@ -6,7 +9,7 @@
   ],
   "compilerOptions": {
     "target": "es2022",
-    "module": "commonjs",
+    "module": "Node16",
     "declaration": true,
     "rootDir": "./src",
     "outDir": "./dist",
