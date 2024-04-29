@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/CaXtHsbh)",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "nyc mocha",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output",
+    "test": "mocha",
+    "coverage": "c8 npm test && c8 report --reporter=lcov",
     "start": "tsc-watch --onSuccess \"node dist/index.js\"",
     "doc": "typedoc"
   },
@@ -16,6 +17,7 @@
     "@eslint/js": "^9.1.1",
     "@types/chai": "^4.3.14",
     "@types/mocha": "^10.0.6",
+    "c8": "^9.1.0",
     "chai": "^4.4.1",
     "coveralls": "^3.1.1",
     "eslint": "^8.57.0",
