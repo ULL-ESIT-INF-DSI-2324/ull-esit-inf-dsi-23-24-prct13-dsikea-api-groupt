@@ -1,10 +1,11 @@
 import { Document, Schema, model } from "mongoose";
+import { Genre } from "../variables/types.js";
 
 interface CustomerInterface extends Document {
   surname: string,
   name: string,
   identityDocument: string,
-  genre?: "male" | "female" | undefined,
+  genre?: Genre,
   dischargeDate?: Date
 }
 
@@ -24,12 +25,14 @@ const CustomerSchema = new Schema<CustomerInterface>({
     trim: true,
     required: true,
     validate: (value: string) => {
-      if(!value.match(/\b\d{8}[A-Z]/)) {
+      const expression = /\b\d{8}[A-Z]$/
+      if(!expression.test(value)) {
         throw new Error('Customer NIF must have 8 digits followed by 1 letter');
       }
     },
   },
   genre: {
+    lowercase: true,
     type: String,
     trim: true,
     enum: ['male', 'female'],
