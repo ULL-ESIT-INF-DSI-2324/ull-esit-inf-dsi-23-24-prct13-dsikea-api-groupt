@@ -9,7 +9,7 @@
 //   type: TransactionType,
 //   moneyAmount: number,
 //   furnitureID: FurnitureInterface,
-//   providerID?: ProviderInterface,
+//   providerID?: ProviderInterface,"W"
 //   customerID?: CustomerInterface
 // }
 
