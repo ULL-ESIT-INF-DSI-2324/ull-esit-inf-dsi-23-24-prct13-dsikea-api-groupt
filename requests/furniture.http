@@ -1,11 +1,12 @@
 
 ### Post new Customer
 
-POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures
+POST http://localhost:3000/furnitures
 Content-Type: application/json
 
 {
   "name": "silla",
+  "productCode": "20394256701A9823B",
   "material": "wood",
   "height": 140,
   "width": 100,
@@ -17,11 +18,12 @@ Content-Type: application/json
 
 ### An other post
 
-POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures
+POST http://localhost:3000/furnitures
 Content-Type: application/json
 
 {
   "name": "silla",
+  "productCode": "20394272341A9823B",
   "material": "plastic",
   "height": 140,
   "width": 100,
@@ -33,11 +35,12 @@ Content-Type: application/json
 
 ### An other post
 
-POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures
+POST http://localhost:3000/furnitures
 Content-Type: application/json
 
 {
   "name": "mesa",
+  "productCode": "2039427901A9823B",
   "material": "wood",
   "height": 140,
   "width": 100,
@@ -47,41 +50,45 @@ Content-Type: application/json
   "prize": 20
 }
 
+### Get all
+
+GET http://localhost:3000/furnitures
+
 ### Get with one param
 
-GET https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?name=silla
+GET http://localhost:3000/furnitures?name=silla
 
 ### Get by color
 
-GET https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?color=brown
+GET http://localhost:3000/furnitures?color=brown
 
 ### Get with multiple params
 
-GET https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?name=silla&material=plastic
+GET http://localhost:3000/furnitures?name=silla&material=plastic
 
 ### delete furniture
 
-DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?name=silla
+DELETE http://localhost:3000/furnitures?productCode=20394272341A9823B
 
 
 ### delete furniture from id
 
-DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures/663d1cdb122d11114e13cc21
+DELETE http://localhost:3000/furnitures/663d3375d41706dcaee729ac
 
 ### patch furniture
 
-PATCH https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?nif=79063714H
+PATCH http://localhost:3000/furnitures?productCode=20394272341A9823B
 Content-Type: application/json
 
 {
-  "surname": "Guillermo"
+  "color": "red"
 }
 
 ### patch from id
 
-PATCH https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures/663d1d24122d11114e13cc26
+PATCH http://localhost:3000/furnitures/663d1d24122d11114e13cc26
 Content-Type: application/json
 
 {
-  "name": "Plaza"
+  "name": "planta"
 }

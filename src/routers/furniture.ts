@@ -23,17 +23,21 @@ furnitureRouter.post('/furnitures', async (req, res) => {
 
 furnitureRouter.get('/furnitures', async (req, res) => {
 
+  const { name, material, height, width, depth, warranty, color, prize } = req.query
+
+  let filter = {}
+
+  if (name) filter = {...filter, ...{ name: name }};
+  if (material) filter = {...filter, ...{ material: material }};
+  if (height) filter = {...filter, ...{ height: height }};
+  if (width) filter = {...filter, ...{ width: width }};
+  if (depth) filter = {...filter, ...{ depth: depth }};
+  if (warranty) filter = {...filter, ...{ warranty: warranty }};
+  if (color) filter = {...filter, ...{ color: color }};
+  if (prize) filter = {...filter, ...{ prize: prize }};
+
   try {
-    const furnitures = await Furniture.find({ 
-      name: req.query.name?.toString(),
-      material: req.query.material?.toString(),
-      height: req.query.height?.toString(),
-      width: req.query.width?.toString(),
-      depth: req.query.depth?.toString(),
-      warranty: req.query.warranty?.toString(),
-      color: req.query.color?.toString(),
-      prize: req.query.prize?.toString()
-    });
+    const furnitures = await Furniture.find(filter);
 
     if (furnitures.length !== 0) {
       return res.send(furnitures);
@@ -64,7 +68,7 @@ furnitureRouter.get('/furnitures/:id', async (req, res) => {
 
 furnitureRouter.patch('/furnitures', async (req, res) => {
   
-  const allowedUpdates = ["surname", "name", "genre"];
+  const allowedUpdates = ["name", "material", "width", "height", "depth", "color", "prize", "warranty"];
   const requestedUpdates = Object.keys(req.body);
 
   const isValidrequest = requestedUpdates.every((data) => allowedUpdates.includes(data));
@@ -74,16 +78,7 @@ furnitureRouter.patch('/furnitures', async (req, res) => {
   }
   
   try {
-    const furniture = await Furniture.findOneAndUpdate({
-      name: req.query.name?.toString(),
-      material: req.query.material?.toString(),
-      height: req.query.height?.toString(),
-      width: req.query.width?.toString(),
-      depth: req.query.depth?.toString(),
-      warranty: req.query.warranty?.toString(),
-      color: req.query.color?.toString(),
-      prize: req.query.prize?.toString()
-    }, req.body )
+    const furniture = await Furniture.findOneAndUpdate({productCode: req.query.productCode?.toString()}, req.body )
 
     if (furniture) {
       return res.send(furniture);
@@ -97,7 +92,7 @@ furnitureRouter.patch('/furnitures', async (req, res) => {
 
 furnitureRouter.patch('/furnitures/:id', async (req, res) => {
   
-  const allowedUpdates = ["surname", "name", "genre"];
+  const allowedUpdates = ["name", "material", "width", "height", "depth", "color", "prize", "warranty"];
   const requestedUpdates = Object.keys(req.body);
 
   const isValidrequest = requestedUpdates.every((data) => allowedUpdates.includes(data));
@@ -125,16 +120,7 @@ furnitureRouter.patch('/furnitures/:id', async (req, res) => {
 
 furnitureRouter.delete('/furnitures', async (req, res) => {
   try {
-    const furniture = await Furniture.findOneAndDelete({
-      name: req.query.name?.toString(),
-      material: req.query.material?.toString(),
-      height: req.query.height?.toString(),
-      width: req.query.width?.toString(),
-      depth: req.query.depth?.toString(),
-      warranty: req.query.warranty?.toString(),
-      color: req.query.color?.toString(),
-      prize: req.query.prize?.toString()
-    });
+    const furniture = await Furniture.findOneAndDelete({productCode: req.query.productCode?.toString()});
 
     if (furniture) {
       return res.status(200).send(furniture);

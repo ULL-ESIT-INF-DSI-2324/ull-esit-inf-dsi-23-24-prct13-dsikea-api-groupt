@@ -11,6 +11,10 @@ Content-Type: application/json
   "genre": "male"
 }
 
+### Get all
+
+GET http://localhost:3000/customers
+
 ### delete customers
 
 DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers?nif=79063714H

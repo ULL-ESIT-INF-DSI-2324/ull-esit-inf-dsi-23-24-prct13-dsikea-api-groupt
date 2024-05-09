@@ -5,6 +5,7 @@ import { Color, Material } from "../variables/types.js";
 
 export interface FurnitureInterface extends Document {
   name: string,
+  productCode: string,
   material: Material,
   height: number,
   width: number,
@@ -25,6 +26,12 @@ const FurnitureSchema = new Schema<FurnitureInterface>({
         throw new Error("El nombre del mueble no puede contener números ni algunos carácteres especiales");
       }
     }
+  },
+  productCode: {
+    type: String,
+    trim: true,
+    required: true,
+    unique: true
   },
   material: {
     type: String,

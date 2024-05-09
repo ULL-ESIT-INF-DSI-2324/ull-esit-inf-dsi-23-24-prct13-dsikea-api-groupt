@@ -7,6 +7,7 @@ import { defaultRouter } from './routers/defaults.js';
 
 
 import './db/database.js'
+
 const port = process.env.PORT || 3000;
 
 const app = express();
