@@ -15,9 +15,53 @@ Content-Type: application/json
   "prize": 40
 }
 
+### An other post
+
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures
+Content-Type: application/json
+
+{
+  "name": "silla",
+  "material": "plastic",
+  "height": 140,
+  "width": 100,
+  "depth": 100,
+  "warranty": 365,
+  "color": "white",
+  "prize": 20
+}
+
+### An other post
+
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures
+Content-Type: application/json
+
+{
+  "name": "mesa",
+  "material": "wood",
+  "height": 140,
+  "width": 100,
+  "depth": 100,
+  "warranty": 365,
+  "color": "brown",
+  "prize": 20
+}
+
+### Get with one param
+
+GET https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?name=silla
+
+### Get by color
+
+GET https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?color=brown
+
+### Get with multiple params
+
+GET https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?name=silla&material=plastic
+
 ### delete furniture
 
-DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?nif=79063714H
+DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?name=silla
 
 
 ### delete furniture from id

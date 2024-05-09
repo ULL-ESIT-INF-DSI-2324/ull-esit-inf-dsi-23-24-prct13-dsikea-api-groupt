@@ -8,11 +8,11 @@ export const furnitureRouter = express.Router()
 
 furnitureRouter.post('/furnitures', async (req, res) => {
   console.log(req.body);
-  const forniture = new Furniture(req.body);
+  const furniture = new Furniture(req.body);
   
   try {
-    await forniture.save();
-    return res.status(201).send(forniture);
+    await furniture.save();
+    return res.status(201).send(furniture);
   } catch (error) {
     return res.status(500).send(error)
   }
@@ -50,9 +50,9 @@ furnitureRouter.get('/furnitures/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    const forniture = await Furniture.findById(id);
-    if (forniture) {
-      return res.send(forniture);
+    const furniture = await Furniture.findById(id);
+    if (furniture) {
+      return res.send(furniture);
     }
     return res.status(404).send({ Error: "Furniture ID not found"});
   } catch (error) {
@@ -75,7 +75,7 @@ furnitureRouter.patch('/furnitures', async (req, res) => {
   }
   
   try {
-    const forniture = await Furniture.findOneAndUpdate({
+    const furniture = await Furniture.findOneAndUpdate({
       name: req.query.name,
       material: req.query.material,
       height: req.query.height,
@@ -86,8 +86,8 @@ furnitureRouter.patch('/furnitures', async (req, res) => {
       prize: req.query.prize
     }, req.body )
 
-    if (forniture) {
-      return res.send(forniture);
+    if (furniture) {
+      return res.send(furniture);
     }
     return res.status(404).send({ Error: "Furniture not found" }); 
 
@@ -108,10 +108,10 @@ furnitureRouter.patch('/furnitures/:id', async (req, res) => {
   }
   
   try {
-    const forniture = await Furniture.findByIdAndUpdate(req.params.id, req.body )
+    const furniture = await Furniture.findByIdAndUpdate(req.params.id, req.body )
 
-    if (forniture) {
-      return res.send(forniture);
+    if (furniture) {
+      return res.send(furniture);
     }
     return res.status(404).send({ Error: "Furniture ID not found" }); 
 
@@ -126,7 +126,7 @@ furnitureRouter.patch('/furnitures/:id', async (req, res) => {
 
 furnitureRouter.delete('/furnitures', async (req, res) => {
   try {
-    const forniture = await Furniture.findOneAndDelete({
+    const furniture = await Furniture.findOneAndDelete({
       name: req.query.name,
       material: req.query.material,
       height: req.query.height,
@@ -137,8 +137,8 @@ furnitureRouter.delete('/furnitures', async (req, res) => {
       prize: req.query.prize
     });
 
-    if (forniture) {
-      return res.status(200).send(forniture);
+    if (furniture) {
+      return res.status(200).send(furniture);
     }
     return res.status(404).send({ Error: "Furniture not found" });
   } catch (error) {
@@ -150,10 +150,10 @@ furnitureRouter.delete('/furnitures', async (req, res) => {
 
 furnitureRouter.delete('/furnitures/:id', async (req, res) => {
   try {
-    const forniture = await Furniture.findByIdAndDelete(req.params.id);
+    const furniture = await Furniture.findByIdAndDelete(req.params.id);
 
-    if (forniture) {
-      return res.status(200).send(forniture);
+    if (furniture) {
+      return res.status(200).send(furniture);
     }
     return res.status(404).send({ Error: "Furniture ID not found" });
   } catch (error) {
