@@ -7,7 +7,6 @@ export const furnitureRouter = express.Router()
 // __________________________________________________________________POST__________________________________________________________________
 
 furnitureRouter.post('/furnitures', async (req, res) => {
-  console.log(req.body);
   const furniture = new Furniture(req.body);
   
   try {
@@ -26,14 +25,14 @@ furnitureRouter.get('/furnitures', async (req, res) => {
 
   try {
     const furnitures = await Furniture.find({ 
-      name: req.query.name,
-      material: req.query.material,
-      height: req.query.height,
-      width: req.query.width,
-      depth: req.query.depth,
-      warranty: req.query.warranty,
-      color: req.query.color,
-      prize: req.query.prize
+      name: req.query.name?.toString(),
+      material: req.query.material?.toString(),
+      height: req.query.height?.toString(),
+      width: req.query.width?.toString(),
+      depth: req.query.depth?.toString(),
+      warranty: req.query.warranty?.toString(),
+      color: req.query.color?.toString(),
+      prize: req.query.prize?.toString()
     });
 
     if (furnitures.length !== 0) {
@@ -76,14 +75,14 @@ furnitureRouter.patch('/furnitures', async (req, res) => {
   
   try {
     const furniture = await Furniture.findOneAndUpdate({
-      name: req.query.name,
-      material: req.query.material,
-      height: req.query.height,
-      width: req.query.width,
-      depth: req.query.depth,
-      warranty: req.query.warranty,
-      color: req.query.color,
-      prize: req.query.prize
+      name: req.query.name?.toString(),
+      material: req.query.material?.toString(),
+      height: req.query.height?.toString(),
+      width: req.query.width?.toString(),
+      depth: req.query.depth?.toString(),
+      warranty: req.query.warranty?.toString(),
+      color: req.query.color?.toString(),
+      prize: req.query.prize?.toString()
     }, req.body )
 
     if (furniture) {
@@ -127,14 +126,14 @@ furnitureRouter.patch('/furnitures/:id', async (req, res) => {
 furnitureRouter.delete('/furnitures', async (req, res) => {
   try {
     const furniture = await Furniture.findOneAndDelete({
-      name: req.query.name,
-      material: req.query.material,
-      height: req.query.height,
-      width: req.query.width,
-      depth: req.query.depth,
-      warranty: req.query.warranty,
-      color: req.query.color,
-      prize: req.query.prize
+      name: req.query.name?.toString(),
+      material: req.query.material?.toString(),
+      height: req.query.height?.toString(),
+      width: req.query.width?.toString(),
+      depth: req.query.depth?.toString(),
+      warranty: req.query.warranty?.toString(),
+      color: req.query.color?.toString(),
+      prize: req.query.prize?.toString()
     });
 
     if (furniture) {
