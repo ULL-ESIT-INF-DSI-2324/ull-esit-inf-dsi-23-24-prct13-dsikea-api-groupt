@@ -22,10 +22,8 @@ customerRouter.post('/customers', async (req, res) => {
 
 
 customerRouter.get('/customers', async (req, res) => {
-  const { nif } = req.query;
-  
   try {
-    const customers = await Customer.find({ customerNif: nif?.toString() });
+    const customers = await Customer.find({ nif: req.query.nif?.toString() });
 
     if (customers.length !== 0) {
       return res.send(customers);
