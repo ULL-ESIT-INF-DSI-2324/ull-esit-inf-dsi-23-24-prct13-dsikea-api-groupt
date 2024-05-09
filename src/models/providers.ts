@@ -1,16 +1,27 @@
 import { model, Schema, Document } from "mongoose";
-
-type CatergoryType = "wood" | "upholstered" | "office" | "outdoor" | "antique" | "kids" | "custom" | "other";
+import { CatergoryType } from "../variables/types.js";
 
 export interface ProviderInterface extends Document {
+  cif: string,
   name: string,
   address: string,
   phone: number,
-  dischargeDate: Date,
   category?: CatergoryType,
 }
 
 const ProviderSchema = new Schema<ProviderInterface>({
+  cif: {
+    type: String,
+    trim: true,
+    required: true,
+    unique: true,
+    validate: (value: string) => {
+      const regexCIF = /^[A-HJNPQRSUVW]{1}[0-9]{7}[0-9A-J]$/i;
+      if(!regexCIF.test(value)) {
+        throw new Error("El Código de Identificación Fiscal no es válido")
+      }
+    }
+  },
   name: {
     type: String,
     trim: true,
@@ -31,15 +42,10 @@ const ProviderSchema = new Schema<ProviderInterface>({
     type: Number,
     required: true,
     validate: (value: number) => {
-      if (value.toString.length !== 9) {
+      if (value.toString().length !== 9) {
         throw new Error("Número de teléfono válido");
       }
     }
-  },
-  dischargeDate: {
-    type: Date,
-    required: false,
-    inmutable: true,
   },
   category: {
     type: String,

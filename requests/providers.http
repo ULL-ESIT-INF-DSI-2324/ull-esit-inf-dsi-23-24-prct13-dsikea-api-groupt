@@ -1,0 +1,76 @@
+
+### Post new Customer
+
+POST http://localhost:3000/providers
+Content-Type: application/json
+
+{
+  "name": "espejos.sl",
+  "cif": "A12345638",
+  "address": "calle castillo n7",
+  "phone": 638787878,
+  "category": "other"
+}
+
+### An other post
+
+POST http://localhost:3000/providers
+Content-Type: application/json
+
+{
+  "name": "Tech Solutions S.L.",
+  "cif": "B98765432",
+  "address": "Calle Innovación 123",
+  "phone": 912345678,
+  "category": "other"
+}
+
+
+### An other post
+
+POST http://localhost:3000/providers
+Content-Type: application/json
+
+{
+  "name": "Librería El Sabio S.A.",
+  "cif": "C54321987",
+  "address": "Avenida de los Libros 45",
+  "phone": 934567890,
+  "category": "other"
+}
+
+
+### Get all
+
+GET http://localhost:3000/providers
+
+### Get with one param
+
+GET http://localhost:3000/providers?cif=B98765432
+
+### delete provider
+
+DELETE http://localhost:3000/providers?cif=B98765432
+
+
+### delete provider from id
+
+DELETE http://localhost:3000/providers/663d3375d41706dcaee729ac
+
+### patch provider
+
+PATCH http://localhost:3000/providers?cif=B98765432
+Content-Type: application/json
+
+{
+  "cif": "A98765432"
+}
+
+### patch from id
+
+PATCH http://localhost:3000/providers/663d4dc985a717969a28cb34
+Content-Type: application/json
+
+{
+  "name": "otro nombre"
+}
