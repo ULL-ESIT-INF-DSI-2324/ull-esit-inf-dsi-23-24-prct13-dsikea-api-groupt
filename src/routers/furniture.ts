@@ -1,12 +1,12 @@
 import express from 'express';
 import { Furniture } from '../models/furnitures.js';
 
-export const customerRouter = express.Router()
+export const furnitureRouter = express.Router()
 
 
 // __________________________________________________________________POST__________________________________________________________________
 
-customerRouter.post('/furnitures', async (req, res) => {
+furnitureRouter.post('/furnitures', async (req, res) => {
   console.log(req.body);
   const forniture = new Furniture(req.body);
   
@@ -22,7 +22,7 @@ customerRouter.post('/furnitures', async (req, res) => {
 // ___________________________________________________________________GET__________________________________________________________________
 
 
-customerRouter.get('/furnitures', async (req, res) => {
+furnitureRouter.get('/furnitures', async (req, res) => {
 
   try {
     const furnitures = await Furniture.find({ 
@@ -46,7 +46,7 @@ customerRouter.get('/furnitures', async (req, res) => {
 })
 
 
-customerRouter.get('/furnitures/:id', async (req, res) => {
+furnitureRouter.get('/furnitures/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -63,7 +63,7 @@ customerRouter.get('/furnitures/:id', async (req, res) => {
 // __________________________________________________________________PATCH_________________________________________________________________
 
 
-customerRouter.patch('/furnitures', async (req, res) => {
+furnitureRouter.patch('/furnitures', async (req, res) => {
   
   const allowedUpdates = ["surname", "name", "genre"];
   const requestedUpdates = Object.keys(req.body);
@@ -96,7 +96,7 @@ customerRouter.patch('/furnitures', async (req, res) => {
   } 
 });
 
-customerRouter.patch('/furnitures/:id', async (req, res) => {
+furnitureRouter.patch('/furnitures/:id', async (req, res) => {
   
   const allowedUpdates = ["surname", "name", "genre"];
   const requestedUpdates = Object.keys(req.body);
@@ -124,7 +124,7 @@ customerRouter.patch('/furnitures/:id', async (req, res) => {
 // __________________________________________________________________DELETE_________________________________________________________________
 
 
-customerRouter.delete('/furnitures', async (req, res) => {
+furnitureRouter.delete('/furnitures', async (req, res) => {
   try {
     const forniture = await Furniture.findOneAndDelete({
       name: req.query.name,
@@ -148,7 +148,7 @@ customerRouter.delete('/furnitures', async (req, res) => {
 })
 
 
-customerRouter.delete('/furnitures/:id', async (req, res) => {
+furnitureRouter.delete('/furnitures/:id', async (req, res) => {
   try {
     const forniture = await Furniture.findByIdAndDelete(req.params.id);
 

@@ -7,7 +7,6 @@ export const customerRouter = express.Router()
 // __________________________________________________________________POST__________________________________________________________________
 
 customerRouter.post('/customers', async (req, res) => {
-  console.log(req.body);
   const customer = new Customer(req.body);
   
   try {

@@ -1,0 +1,43 @@
+
+### Post new Customer
+
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures
+Content-Type: application/json
+
+{
+  "name": "silla",
+  "material": "wood",
+  "height": 140,
+  "width": 100,
+  "depth": 100,
+  "warranty": 365,
+  "color": "brown",
+  "prize": 40
+}
+
+### delete furniture
+
+DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?nif=79063714H
+
+
+### delete furniture from id
+
+DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures/663d1cdb122d11114e13cc21
+
+### patch furniture
+
+PATCH https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures?nif=79063714H
+Content-Type: application/json
+
+{
+  "surname": "Guillermo"
+}
+
+### patch from id
+
+PATCH https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/furnitures/663d1d24122d11114e13cc26
+Content-Type: application/json
+
+{
+  "name": "Plaza"
+}
