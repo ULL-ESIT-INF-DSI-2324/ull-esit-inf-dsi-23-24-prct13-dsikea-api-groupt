@@ -31,7 +31,7 @@ customerRouter.get('/customers', async (req, res) => {
     if (customers.length !== 0) {
       return res.send(customers);
     }
-    return res.status(404).send({ Error: "Customer nif not found"});
+    return res.status(404).send({ Error: "Customer NIF not found"});
   } catch (error) {
     return res.status(500).send(error);
   }

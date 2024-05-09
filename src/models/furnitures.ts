@@ -11,7 +11,6 @@ export interface FurnitureInterface extends Document {
   depth?: number,
   warranty: number,
   color?: Color,
-  dischargeDate: Date,
   prize: number
 }
 
@@ -66,11 +65,6 @@ const FurnitureSchema = new Schema<FurnitureInterface>({
     enum: ["white", "black", "blue", "red", "yellow", "green", "brown", "gray", "other"],
     required: false,
     default: "other"
-  },
-  dischargeDate: {
-    type: Date,
-    required: false,
-    inmutable: true,
   },
   prize: {
     type: Number,

@@ -1,0 +1,39 @@
+
+### Post new Customer
+
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers
+Content-Type: application/json
+
+{
+  "surname": "Ejemplo",
+  "name": "Apellido",
+  "nif": "79063712H",
+  "genre": "male"
+}
+
+### delete customers
+
+DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers?nif=79063714H
+
+
+### delete customer from id
+
+DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers/663d1cdb122d11114e13cc21
+
+### patch customer
+
+PATCH https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers?nif=79063714H
+Content-Type: application/json
+
+{
+  "surname": "Guillermo"
+}
+
+### patch from id
+
+PATCH https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers/663d1d24122d11114e13cc26
+Content-Type: application/json
+
+{
+  "name": "Plaza"
+}
