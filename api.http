@@ -1,0 +1,12 @@
+
+# Post new Customer
+
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers
+
+Content-Type: application/json
+{
+  "surname": "Ejemplo",
+  "name": "Apellido",
+  "nif": "79063714H",
+  "genre": "male"
+}
