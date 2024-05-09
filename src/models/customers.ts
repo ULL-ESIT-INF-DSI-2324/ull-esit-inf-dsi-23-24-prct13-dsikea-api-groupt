@@ -1,12 +1,11 @@
 import { Document, Schema, model } from "mongoose";
 import { Genre } from "../variables/types.js";
 
-interface CustomerInterface extends Document {
+export interface CustomerInterface extends Document {
   surname: string,
   name: string,
-  identityDocument: string,
+  nif: string,
   genre?: Genre,
-  dischargeDate?: Date
 }
 
 const CustomerSchema = new Schema<CustomerInterface>({
@@ -20,10 +19,11 @@ const CustomerSchema = new Schema<CustomerInterface>({
     trim: true,
     required: true,
   },
-  identityDocument: {
+  nif: {
     type: String,
     trim: true,
     required: true,
+    unique: true,
     validate: (value: string) => {
       const expression = /\b\d{8}[A-Z]$/
       if(!expression.test(value)) {
@@ -39,12 +39,8 @@ const CustomerSchema = new Schema<CustomerInterface>({
     required: false,
     default: undefined
   },
-  dischargeDate: {
-    type: Date,
-    required: false,
-    inmutable: true,
-  }
-
+}, {
+  timestamps: true
 })
 
 export const Customer = model<CustomerInterface>('Customer', CustomerSchema)

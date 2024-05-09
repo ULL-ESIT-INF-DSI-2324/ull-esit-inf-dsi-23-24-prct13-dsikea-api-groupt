@@ -2,7 +2,7 @@ import { model, Schema, Document } from "mongoose";
 
 type CatergoryType = "wood" | "upholstered" | "office" | "outdoor" | "antique" | "kids" | "custom" | "other";
 
-interface ProviderInterface extends Document {
+export interface ProviderInterface extends Document {
   name: string,
   address: string,
   phone: number,
@@ -49,6 +49,8 @@ const ProviderSchema = new Schema<ProviderInterface>({
     required: false,
     default: "other"
   }
+}, {
+  timestamps: true
 })
 
 export const Provider = model<ProviderInterface>('Provider', ProviderSchema)

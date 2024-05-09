@@ -3,7 +3,7 @@ import { Schema, model, Document } from "mongoose";
 import { Color, Material } from "../variables/types.js";
 
 
-interface FurnitureInterface extends Document {
+export interface FurnitureInterface extends Document {
   name: string,
   material: Material,
   height: number,
@@ -76,6 +76,8 @@ const FurnitureSchema = new Schema<FurnitureInterface>({
     type: Number,
     min: 0,
   }
+}, {
+  timestamps: true
 })
 
 export const Furniture = model<FurnitureInterface>('Furniture', FurnitureSchema);
