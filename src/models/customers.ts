@@ -41,8 +41,8 @@ const CustomerSchema = new Schema<CustomerInterface>({
     unique: true,
     validate: (value: string) => {
       const expression = /\b\d{8}[A-Z]$/
-      if(!expression.test(value)) {
-        throw new Error('Customer NIF must have 8 digits followed by 1 letter');
+      if(!expression.test(value)) { 
+        throw new Error('NIF del cliente debe tener 8 dígitos seguidos de 1 letra');
       }
     },
   },

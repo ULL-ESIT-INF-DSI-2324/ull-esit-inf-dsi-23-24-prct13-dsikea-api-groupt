@@ -1,34 +1,52 @@
-import request from 'supertest';
-import { app } from '../src/index.js';
-import { expect } from 'chai';
-import { describe, it } from 'mocha';
+import request from "supertest";
+import { app } from "../src/index.js";
+import { expect } from "chai";
+import { describe, it, before, after } from "mocha";
 import { Customer } from '../src/models/customers.js';
-
+import { connectDB, closeDB } from '../src/db/database.js';
+import mongoose from 'mongoose';
 
 const firstCustomer = {
+  name: "John",
+  surname: "Doe",
   nif: "11111111A",
   genre: 'male'
 };
 
 const secondCustomer = {
+  name: "Jane",
+  surname: "Doe",
   nif: "11111111B",
   genre: 'female'
 };
 
 const thirdCustomer = {
+  name: "Jim",
+  surname: "Beam",
   nif: "11111111C",
   genre: 'male'
 };
 
 // Hooks
-before(async () => {
+before(async function () {
+  this.timeout(30000); // Aumenta el tiempo de espera para el hook `before`
+  await connectDB();
+});
+
+after(async function () {
+  this.timeout(30000); // Aumenta el tiempo de espera para el hook `after`
+  await closeDB();
+});
+
+beforeEach(async () => {
+  await Customer.deleteMany();
   await new Customer(firstCustomer).save();
   await new Customer(secondCustomer).save();
   await new Customer(thirdCustomer).save();
 });
 
-after(async () => {
-  await Customer.deleteMany({});
+afterEach(async () => {
+  await Customer.deleteMany();
 });
 
 // Tests
@@ -54,6 +72,8 @@ describe('GET /customers', () => {
 describe('POST /customers', () => {
   it('Should save a customer in the database', async () => {
     const customer = {
+      name: "Mary",
+      surname: "Poppins",
       nif: "11111111D",
       genre: 'female'
     };
@@ -98,7 +118,7 @@ describe('DELETE /customers', () => {
 describe('Customer Schema', () => {
   it('Should return an error if the NIF of a customer is empty', async () => {
     try {
-      await Customer.create({ nif: '' });
+      await Customer.create({ name: "Test", surname: "Test", nif: '' });
     } catch (err) {
       expect(err.name).to.equal('ValidationError');
     }
@@ -106,7 +126,7 @@ describe('Customer Schema', () => {
 
   it('Should return an error if the NIF of a customer does not have 9 characters', async () => {
     try {
-      await Customer.create({ nif: '12345678' });
+      await Customer.create({ name: "Test", surname: "Test", nif: '12345678' });
     } catch (err) {
       expect(err.name).to.equal('ValidationError');
     }
@@ -114,7 +134,7 @@ describe('Customer Schema', () => {
 
   it('Should return an error if the NIF of a customer does not have a valid format', async () => {
     try {
-      await Customer.create({ nif: '12345678a' }); 
+      await Customer.create({ name: "Test", surname: "Test", nif: '12345678a' }); 
     } catch (err) {
       expect(err.name).to.equal('ValidationError');
     }

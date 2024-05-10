@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "tsc-watch --onSuccess \"env-cmd -f ./config/dev.env node dist/index.js\"",
+    "dev": "tsc-watch --onSuccess \"env-cmd -f ./config/dev.end node dist/index.js\"",
     "doc": "typedoc",
     "test": "mocha --exit",
     "coverage": "c8 npm test && c8 report --reporter=lcov"
