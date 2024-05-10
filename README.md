@@ -25,8 +25,7 @@
 6. [GitHub Actions](#6-github-actions)
 7. [Modulos](#7-módulos)
 8. [SonarCloud](#8-sonarcloud)
-9. [Yargs y Chalk](#9-yargs-y-chalk)
-10. [API sincrona de Node.js](#10-api-sincrona-de-nodejs)
+9. [Mongodb y Mongoose]
 11. [Ejercicio](#11-ejercicio)
 12. [Conclusiones](#9-conclusiones)
 
@@ -34,10 +33,30 @@
 
 # 1. Introducción.
 
+Este informe detalla el proceso de desarrollo de la última práctica de la asignatura. 
+
+En esta práctica, la segunda grupal de la asignatura, se ha llevado a cabo la implementación de un API REST utilizando Node.js y Express. El objetivo principal ha sido permitir operaciones CRUD (Crear, Leer, Actualizar y Borrar) para la gestión de una tienda de muebles.
+
+Todo el código desarrollado se ha alojado en el repositorio generado tras la aceptación de la asignación grupal de GitHub Classroom, siguiendo una estructura de proyecto similar a la vista en clase.
+
+Además, se ha documentado la solución diseñada, haciendo especial énfasis en las decisiones de diseño implementadas, y se ha realizado un vídeo de 10 minutos de duración máxima en el que todos los miembros del grupo han intervenido. El objetivo del vídeo ha sido describir todas las fases del desarrollo: código fuente implementado, documentación, pruebas, integración continua, calidad del código y despliegue.
+
 ---
 
-# 2. Objetivos
+# 2. Objetivos.
+Los objetivos de esta práctica han sido:
 
+- Implementar un API REST con Node.js y Express.
+
+- Permitir operaciones CRUD para la gestión de una tienda de muebles.
+
+- Utilizar MongoDB/MongoDB Atlas como sistema de base de datos no relacional, junto con Mongoose para la gestión desde Node.js.
+
+- Desplegar el API en cyclic.
+
+- Documentar la solución diseñada, haciendo hincapié en las decisiones de diseño.
+
+- Realizar un vídeo descriptivo de todas las fases del desarrollo.
 
 ---
 
@@ -637,125 +656,5 @@ Hecho esto en nuestro repositorio, haremos git add, git commit y un push y si to
 
 --- 
 
-# 9. Yargs y Chalk
+# 9. Mongodb y Mongoose.
 
-En el contexto del desarrollo de aplicaciones de línea de comandos, los paquetes **yargs y chalk** desempeñan roles fundamentales para el manejo de argumentos y la presentación de información de manera legible y atractiva. A continuación, se detallan las características y el uso de cada uno de estos paquetes:
-
-## Chalk: Estilización de Texto en Consola
-
-El paquete Chalk se utiliza para agregar estilos y colores a la salida de texto en la consola, permitiendo mejorar la legibilidad y la presentación de la información. Algunas características importantes incluyen:
-
-**Estilos y Colores**: Chalk proporciona una amplia variedad de estilos y colores que pueden aplicarse al texto, como negrita, subrayado, colores de fondo, entre otros.
-
-**API Encadenada**: Permite encadenar varios estilos y colores para aplicar múltiples efectos a un texto.
-
-**Facilidad de Uso**: La sintaxis simple y clara hace que sea fácil aplicar estilos y colores a diferentes partes del texto.
-
-
-Instalaremos chalk mediante el comando:
-```bash
-npm i chalk
-```
-
-La última versión se trata de un módulo ESM, por lo que tendremos que modificar el fichero package.json para establecer la propiedad type al valor module:
-```typescript
-{
-  "name": "ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-albaaperez",
-  "version": "1.0.0",
-  "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/T5K9tzcv)",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "c8 mocha",
-    "coverage": "c8 npm test && c8 report --reporter=lcov",
-    "doc": "typedoc",
-    "start": "tsc-watch --onSuccess \"node dist/MAGICAPP/index.js\""
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/chai": "^4.3.12",
-    "@types/mocha": "^10.0.6",
-    "@types/sinon": "^17.0.3",
-    "@types/yargs": "^17.0.32",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "c8": "^9.1.0",
-    "chai": "^4.4.1",
-    "eslint": "^8.57.0",
-    "mocha": "^10.3.0",
-    "nyc": "^15.1.0",
-    "sinon": "^17.0.1",
-    "ts-node": "^10.9.2",
-    "tsc-watch": "^6.0.4",
-    "typedoc": "^0.25.12"
-  },
-  "dependencies": {
-    "chalk": "^5.3.0",
-    "rimraf": "^5.0.5",
-    "typescript": "^5.4.2",
-    "yargs": "^17.7.2"
-  }
-}
-```
-Además, en el tsconfig deberemos especificar la propiedad module, asígnándole el valor node16.
-
-Un ejemplo de uso de chalk es el siguiente con diferentes estilos y colores:
-```typescript
-import chalk from "chalk";
-
-const log = console.log;
-
-// Estilos y colores simples
-log(chalk.blue("Hello") + " World" + chalk.red("!"));
-
-// Combinación de estilos y colores
-log(chalk.blue.bgRed.bold("Hello world!"));
-
-// Aplicación a múltiples argumentos
-log(chalk.blue("Hello", "World!", "Foo", "bar", "biz", "baz"));
-
-// Anidamiento de estilos
-log(chalk.red("Hello", chalk.underline.bgBlue("world") + "!"));
-```
-
-
-## Yargs
-El paquete **Yargs** se utiliza para analizar los argumentos pasados a un programa desde la línea de comandos, facilitando la creación de interfaces de usuario interactivas y robustas. Algunas características importantes incluyen:
-
-**Gestión de Comandos**: Permite definir y gestionar diferentes comandos, cada uno con sus opciones y manejadores correspondientes.
-
-**Validación de Argumentos**: Ofrece opciones para especificar el tipo y la obligatoriedad de los argumentos, facilitando la validación de la entrada del usuario.
-
-**API Encadenada**: Permite encadenar varias configuraciones de comandos y opciones para una fácil configuración.
-
-**Integración con TypeScript**: Se incluyen los tipos de TypeScript para un desarrollo más seguro y sin errores.
-
-Para el comienzo de su utilización deberemo instalarlo con los siguientes comandos:
-```bash
-npm i yargs
-npm i --save-dev @types/yargs
-```
-
-Un ejemplo de uso del yargs sería el siguiente:
-```typescript
-import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
-
-yargs(hideBin(process.argv))
-  .command('add', 'Adds a card to the collection', {
-    id: {
-      description: 'Card ID',
-      type: 'number',
-      demandOption: true
-    }
-  }, (argv) => {
-    console.log(argv.id);
-  })
-  .help()
-  .argv;
-```
-
-
---- 
