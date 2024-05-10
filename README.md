@@ -25,7 +25,7 @@
 6. [GitHub Actions](#6-github-actions)
 7. [Modulos](#7-módulos)
 8. [SonarCloud](#8-sonarcloud)
-9. [Mongodb y Mongoose]
+9. [Mongodb y Mongoose](#9-mongodb-y-mongoose)
 11. [Ejercicio](#11-ejercicio)
 12. [Conclusiones](#9-conclusiones)
 
@@ -658,3 +658,29 @@ Hecho esto en nuestro repositorio, haremos git add, git commit y un push y si to
 
 # 9. Mongodb y Mongoose.
 
+## ¿Qué es Mongodb?
+MongoDB es una base de datos NoSQL que utiliza un modelo de datos basado en documentos. En lugar de utilizar tablas y filas como en las bases de datos relacionales, MongoDB utiliza colecciones y documentos JSON.
+
+## Operaciones CRUD en MongoDB
+Las operaciones CRUD (Crear, Leer, Actualizar, Borrar) son comunes en cualquier sistema de gestión de bases de datos. En MongoDB, estas operaciones se realizan de la siguiente manera:
+
+- **Crear:** Utilizando el método `insertOne` o `insertMany` para añadir documentos a una colección.
+- **Leer:** Utilizando métodos como `findOne` o `find` para buscar documentos en una colección.
+- **Actualizar:** Utilizando métodos como `updateOne` o `updateMany` para modificar documentos existentes.
+- **Borrar:** Utilizando métodos como `deleteOne` o `deleteMany` para eliminar documentos de una colección.
+
+## ¿Qué es Mongoose?
+Mongoose es una biblioteca de modelado de objetos para MongoDB y Node.js. Proporciona una solución basada en esquemas para modelar datos de la aplicación.
+
+### Características principales de Mongoose:
+- Define modelos con un esquema claro y estructurado.
+- Proporciona validación de datos.
+- Permite definir relaciones entre datos.
+- Ofrece una API sencilla para realizar operaciones CRUD en MongoDB desde Node.js.
+
+## Instalación
+El primer paso para utilizar este módulo es instalarlo:
+
+```bash
+$ npm i mongoose
+```

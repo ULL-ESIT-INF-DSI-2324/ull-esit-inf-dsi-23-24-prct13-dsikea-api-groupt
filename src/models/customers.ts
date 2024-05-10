@@ -1,6 +1,13 @@
 import { Document, Schema, model } from "mongoose";
 import { Genre } from "../variables/types.js";
 
+/**
+ * Interfaz para la creación de un objeto Cliente que hereda de Document.
+ * @property {string} surname - El apellido del cliente.
+ * @property {string} name - El nombre del cliente.
+ * @property {string} nif - El NIF del cliente. Debe tener 8 dígitos seguidos de 1 letra.
+ * @property {string} genre - El género del cliente. Puede ser 'male' (masculino) o 'female' (femenino). Este campo es opcional.
+ */
 export interface CustomerInterface extends Document {
   surname: string,
   name: string,
@@ -8,6 +15,14 @@ export interface CustomerInterface extends Document {
   genre?: Genre,
 }
 
+/**
+ * CustomerSchema define la estructura del documento Cliente en MongoDB.
+ * Incluye los siguientes campos:
+ * - surname (apellido): Una cadena que se recorta y es obligatoria.
+ * - name (nombre): Una cadena que se recorta y es obligatoria.
+ * - nif: Una cadena única que se recorta y es obligatoria. Debe tener 8 dígitos seguidos de 1 letra.
+ * - genre (género): Una cadena que se recorta, no es obligatoria, y puede ser 'male' (masculino) o 'female' (femenino). Se convierte a minúsculas.
+ */
 const CustomerSchema = new Schema<CustomerInterface>({
   surname: {
     type: String,
@@ -43,4 +58,5 @@ const CustomerSchema = new Schema<CustomerInterface>({
   timestamps: true
 })
 
+// exportamos el modelo Customer
 export const Customer = model<CustomerInterface>('Customer', CustomerSchema)
