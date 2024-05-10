@@ -1,7 +1,7 @@
 
 ### Post new Customer
 
-POST http://localhost:3000/customers
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers
 Content-Type: application/json
 
 {
@@ -11,9 +11,33 @@ Content-Type: application/json
   "genre": "male"
 }
 
+### Post new Customer
+
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers
+Content-Type: application/json
+
+{
+  "surname": "Nombre",
+  "name": "Apell",
+  "nif": "38910248C",
+  "genre": "female"
+}
+
+### Post new Customer
+
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers
+Content-Type: application/json
+
+{
+  "surname": "NombreEjemplo",
+  "name": "ApellidoEjemplo",
+  "nif": "12345678G",
+  "genre": "male"
+}
+
 ### Get all
 
-GET http://localhost:3000/customers
+GET https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/customers
 
 ### delete customers
 
