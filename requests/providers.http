@@ -1,7 +1,7 @@
 
 ### Post new Customer
 
-POST http://localhost:3000/providers
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/providers
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 
 ### An other post
 
-POST http://localhost:3000/providers
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/providers
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 ### An other post
 
-POST http://localhost:3000/providers
+POST https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/providers
 Content-Type: application/json
 
 {
@@ -42,24 +42,24 @@ Content-Type: application/json
 
 ### Get all
 
-GET http://localhost:3000/providers
+GET https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/providers
 
 ### Get with one param
 
-GET http://localhost:3000/providers?cif=B98765432
+GET https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/providers?cif=B98765432
 
 ### delete provider
 
-DELETE http://localhost:3000/providers?cif=B98765432
+DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/providers?cif=B98765432
 
 
 ### delete provider from id
 
-DELETE http://localhost:3000/providers/663d3375d41706dcaee729ac
+DELETE https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/providers/663d3375d41706dcaee729ac
 
 ### patch provider
 
-PATCH http://localhost:3000/providers?cif=B98765432
+PATCH https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/providers?cif=B98765432
 Content-Type: application/json
 
 {
@@ -68,7 +68,7 @@ Content-Type: application/json
 
 ### patch from id
 
-PATCH http://localhost:3000/providers/663d4dc985a717969a28cb34
+PATCH https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com/providers/663d4dc985a717969a28cb34
 Content-Type: application/json
 
 {
