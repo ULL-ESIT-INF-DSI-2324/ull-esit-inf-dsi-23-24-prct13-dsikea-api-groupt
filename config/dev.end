@@ -1,0 +1,2 @@
+PORT=3000
+MONGODB_URL=mongodb+srv://alu0101483474:admin123@cluster0.povib2w.mongodb.net/dev
