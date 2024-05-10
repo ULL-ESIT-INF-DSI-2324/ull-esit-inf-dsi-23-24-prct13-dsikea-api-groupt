@@ -1,0 +1,79 @@
+
+### Post new Customer
+
+POST http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+  "type": "sell",
+  "productCode": "20394256701A9823B",
+  "providerCIF": "A12345638",
+  "moneyAmount": 91829
+}
+
+### An other post
+
+POST http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+  "type": "purchase",
+  "productCode": "20394256701A9823B",
+  "customerNIF": "79063712H",
+  "moneyAmount": 12334
+}
+
+
+### An other post
+
+POST http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+  "type": "sell",
+  "productCode": "NEW94256701A9823B",
+  "providerCIF": "A12345638",
+  "moneyAmount": 234,
+  "name": "planta",
+  "material": "wood",
+  "height": 100,
+  "width": 50,
+  "warranty": 238,
+  "color": "green"
+}
+
+
+### Get all
+
+GET http://localhost:3000/transactions
+
+### Get with param
+
+GET http://localhost:3000/transactions?customerNIF=79063712H
+
+### delete provider
+
+DELETE http://localhost:3000/transactions?productCode=20394256701A9823B
+
+
+### delete provider from id
+
+DELETE http://localhost:3000/transactions/663d3375d41706dcaee729ac
+
+### patch provider
+
+PATCH http://localhost:3000/transactions?customerNIF=79063712H
+Content-Type: application/json
+
+{
+  "productCode": "2039427927941823B"
+}
+
+### patch from id
+
+PATCH http://localhost:3000/transactions/663d4dc985a717969a28cb34
+Content-Type: application/json
+
+{
+  "name": "otro nombre"
+}

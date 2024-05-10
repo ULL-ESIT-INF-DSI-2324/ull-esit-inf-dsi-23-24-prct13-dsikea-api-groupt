@@ -21,10 +21,10 @@ export type Material = "wood" | "metal" | "unpholstery" | "plastic" | "glass" | 
 
 /**
  * Tipo de dato para el tipo de transacción.
- * Puede ser "sell", "purchase" o undefined.
+ * Puede ser "sell", "purchase".
  * @typedef {string} TransactionType
  */
-export type TransactionType = "sell" | "purchase" | undefined;
+export type TransactionType = "sell" | "purchase";
 
 /**
  * Tipo de dato para el tipo de categoría de muebles.

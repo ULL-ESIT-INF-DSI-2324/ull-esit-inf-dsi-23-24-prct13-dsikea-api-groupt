@@ -88,6 +88,21 @@ furnitureRouter.get('/furnitures/:id', async (req, res) => {
  * @returns {Promise<Response>} Una promesa que resuelve a una respuesta HTTP.
  */
 furnitureRouter.patch('/furnitures', async (req, res) => {
+
+  // constante que almacena los valores de la consulta
+  const { name, material, height, width, depth, warranty, color, prize } = req.query
+  // si no se proporciona ningún filtro, se devuelven todos los muebles
+  let filter = {}
+
+  if (name) filter = {...filter, ...{ name: name }};
+  if (material) filter = {...filter, ...{ material: material }};
+  if (height) filter = {...filter, ...{ height: height }};
+  if (width) filter = {...filter, ...{ width: width }};
+  if (depth) filter = {...filter, ...{ depth: depth }};
+  if (warranty) filter = {...filter, ...{ warranty: warranty }};
+  if (color) filter = {...filter, ...{ color: color }};
+  if (prize) filter = {...filter, ...{ prize: prize }};
+
   // Constantes para validar los campos que se pueden actualizar
   const allowedUpdates = ["name", "material", "width", "height", "depth", "color", "prize", "warranty"];
   const requestedUpdates = Object.keys(req.body);
@@ -97,7 +112,7 @@ furnitureRouter.patch('/furnitures', async (req, res) => {
     return res.status(400).send({ Error: "Invalid update" });
   }
   try {
-    const furniture = await Furniture.findOneAndUpdate({productCode: req.query.productCode?.toString()}, req.body )
+    const furniture = await Furniture.updateMany(filter, req.body )
     // si se encontró el mueble y se actualizó correctamente, se devuelve el mueble actualizado
     if (furniture) {
       return res.send(furniture);
@@ -147,8 +162,23 @@ furnitureRouter.patch('/furnitures/:id', async (req, res) => {
  * @returns {Promise<Response>} Una promesa que resuelve a una respuesta HTTP.
  */
 furnitureRouter.delete('/furnitures', async (req, res) => {
+
+  // constante que almacena los valores de la consulta
+  const { name, material, height, width, depth, warranty, color, prize } = req.query
+  // si no se proporciona ningún filtro, se devuelven todos los muebles
+  let filter = {}
+
+  if (name) filter = {...filter, ...{ name: name }};
+  if (material) filter = {...filter, ...{ material: material }};
+  if (height) filter = {...filter, ...{ height: height }};
+  if (width) filter = {...filter, ...{ width: width }};
+  if (depth) filter = {...filter, ...{ depth: depth }};
+  if (warranty) filter = {...filter, ...{ warranty: warranty }};
+  if (color) filter = {...filter, ...{ color: color }};
+  if (prize) filter = {...filter, ...{ prize: prize }};
+
   try {
-    const furniture = await Furniture.findOneAndDelete({productCode: req.query.productCode?.toString()});
+    const furniture = await Furniture.deleteMany(filter);
     // si se encontró el mueble y se eliminó correctamente, se devuelve el mueble eliminado
     if (furniture) {
       return res.status(200).send(furniture);

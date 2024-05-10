@@ -14,10 +14,13 @@ import { CustomerInterface } from "./customers.js";
  * @property {CustomerInterface} customerID - El ID del cliente. Este campo es opcional.
  */
 interface TransactionInterface extends Document {
-  type?: TransactionType,
+  type: TransactionType,
+  productCode: string,
+  providerCIF?: string,
+  customerNIF?: string,
   moneyAmount: number,
   furnitureID: FurnitureInterface,
-  providerID?: ProviderInterface
+  providerID?: ProviderInterface,
   customerID?: CustomerInterface
 }
 
@@ -34,9 +37,25 @@ const TransactionSchema = new Schema<TransactionInterface>({
   type: {
     type: String,
     trim: true,
-    required: false,
-    default: undefined,
+    required: true,
     enum: ["sell", "purchase"],
+  },
+  productCode: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  providerCIF: {
+    type: String,
+    trim: true,
+    required: false,
+    default: undefined
+  },
+  customerNIF: {
+    type: String,
+    trim: true,
+    required: false,
+    default: undefined
   },
   moneyAmount: {
     type: Number,
