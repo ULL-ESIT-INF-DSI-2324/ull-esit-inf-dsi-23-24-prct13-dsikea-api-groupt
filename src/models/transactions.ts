@@ -1,5 +1,4 @@
 import { model, Schema, Document } from "mongoose";
-
 import { TransactionType } from "../variables/types.js";
 import { ProviderInterface } from "./providers.js";
 import { FurnitureInterface } from "./furnitures.js";
