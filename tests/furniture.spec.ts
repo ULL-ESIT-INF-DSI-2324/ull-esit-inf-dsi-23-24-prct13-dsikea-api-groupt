@@ -3,7 +3,7 @@ import { expect } from "chai";
 import request from "supertest";
 import { app } from "../src/index.js";
 import { Furniture } from "../src/models/furnitures.js";
-import { connectDB, closeDB } from '../src/db/database.js';
+import { connectDB } from '../src/db/database.js';
 
 // declaramos muebles de prueba con sus respectivos datos
 const firstFurniture = {
@@ -31,12 +31,6 @@ const thirdFurniture = {
 // este es utilizado para conectarse a la base de datos antes de los tests
 before(async function (done) {
   await connectDB();
-  done();
-});
-
-// este es utilizado para cerrar la conexión a la base de datos después de los tests
-after(async function (done) {
-  await closeDB();
   done();
 });
 

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import { connect } from "mongoose";
 
 /**
  * Lo que hace este script es conectarse a la base de datos de MongoDB.
@@ -7,7 +7,7 @@ import mongoose from "mongoose";
  */
 export const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://guillermoplaza:dsi@dsi-groupt-dsikea.czuoep8.mongodb.net/');
+    await connect('mongodb+srv://guillermoplaza:dsi@dsi-groupt-dsikea.czuoep8.mongodb.net/');
     console.log('Database connected');
   } catch (error) {
     console.error('Database connection error:', error);

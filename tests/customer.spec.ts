@@ -3,7 +3,7 @@ import { expect } from "chai";
 import request from "supertest";
 import { app } from "../src/index.js";
 import { Customer } from '../src/models/customers.js';
-import { connectDB, closeDB } from '../src/db/database.js';
+import { connectDB } from '../src/db/database.js';
 
 // Declaramos los clientes de prueba
 const firstCustomer = {
@@ -31,12 +31,6 @@ const thirdCustomer = {
 // Este hook es utilizado para conectarse a la base de datos antes de los tests
 before(async function (done) {
   await connectDB();
-  done();
-});
-
-// Este hook es utilizado para cerrar la conexión a la base de datos después de los tests
-after(async function (done) {
-  await closeDB();
   done();
 });
 
