@@ -5,12 +5,9 @@ import { connect } from "mongoose";
  * Si la conexión es exitosa, imprime un mensaje en la consola.
  * Si la conexión falla, imprime el error en la consola.
  */
-export const connectDB = async () => {
-  try {
-    await connect('mongodb+srv://guillermoplaza:dsi@dsi-groupt-dsikea.czuoep8.mongodb.net/');
-    console.log('Database connected');
-  } catch (error) {
-    console.error('Database connection error:', error);
-    throw error;
-  }
-};
+try {
+  await connect('mongodb+srv://guillermoplaza:dsi@dsi-groupt-dsikea.czuoep8.mongodb.net/');
+  console.log('Connection stablished in https://ull-esit-inf-dsi-23-24-prct13-dsikea-api-3m1d.onrender.com');
+} catch (err) {
+  console.log(err);
+}
