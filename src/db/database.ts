@@ -14,18 +14,3 @@ export const connectDB = async () => {
     throw error;
   }
 };
-
-/**
- * Lo que hace este script es cerrar la conexión a la base de datos de MongoDB.
- * Si la conexión se cierra exitosamente, imprime un mensaje en la consola.
- * Si la conexión falla, imprime el error en la consola.
- */
-export const closeDB = async () => {
-  try { 
-    await mongoose.connection.close();
-    console.log('Database connection closed');
-  } catch (error) {
-    console.error('Error closing database connection:', error);
-    throw error;
-  }
-};
